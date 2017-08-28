@@ -19,8 +19,8 @@
     "start-mockapi": "json-server --watch src/api/db.json --port 3001",
     "clean-dist": "rimraf ./dist && mkdir dist",
     "prebuild": "npm-run-all prestart clean-dist test lint",
-    "build": "node buildscripts/build",
-    "postbuild": "node buildscripts/distServer"
+    "build": "node buildscripts/build.js",
+    "postbuild": "node buildscripts/distServer.js"
   },
   "main": "index.js",
   "repository": "https://github.com/KatherineEbel/expressBoilerplate.git",
@@ -47,8 +47,6 @@
     "html-webpack-plugin": "^2.30.1",
     "json-schema-faker": "^0.4.3",
     "json-server": "^0.12.0",
-    "uglify-js": "git://github.com/mishoo/UglifyJS2",
-    "uglifyjs-webpack-plugin": "^0.4.6",
     "whatwg-fetch": "^2.0.3"
   },
   "dependencies": {
