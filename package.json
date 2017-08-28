@@ -16,7 +16,11 @@
     "test:watch": "npm run test -- --watch",
     "generate-mock-data": "npm run prestart && node buildscripts/generateMockData",
     "prestart-mockapi": "npm run generate-mock-data",
-    "start-mockapi": "json-server --watch src/api/db.json --port 3001"
+    "start-mockapi": "json-server --watch src/api/db.json --port 3001",
+    "clean-dist": "rimraf ./dist && mkdir dist",
+    "prebuild": "npm-run-all prestart clean-dist test lint",
+    "build": "node buildscripts/build",
+    "postbuild": "node buildscripts/distServer"
   },
   "main": "index.js",
   "repository": "https://github.com/KatherineEbel/expressBoilerplate.git",
@@ -39,9 +43,12 @@
     "eslint-plugin-import": "^2.7.0",
     "eslint-watch": "^3.1.2",
     "express": "^4.15.4",
+    "extract-text-webpack-plugin": "^3.0.0",
     "html-webpack-plugin": "^2.30.1",
     "json-schema-faker": "^0.4.3",
     "json-server": "^0.12.0",
+    "uglify-js": "git://github.com/mishoo/UglifyJS2",
+    "uglifyjs-webpack-plugin": "^0.4.6",
     "whatwg-fetch": "^2.0.3"
   },
   "dependencies": {

@@ -1,19 +1,21 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {
-  devtool: 'inline-source-map',
+  devtool: 'source-map',
   entry: [
     path.resolve(__dirname, 'src/index')
   ],
   target: 'web',
   output: {
-    path: path.resolve(__dirname, 'src'),
+    path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
     filename: 'bundle.js'
   },
   plugins: [
+    // Minify JS
+    new UglifyJSPlugin(),
     new HtmlWebpackPlugin({
       template: 'src/index.html',
       inject: true
