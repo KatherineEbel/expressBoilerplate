@@ -39,6 +39,7 @@
     "chalk": "^2.1.0",
     "cheerio": "^1.0.0-rc.2",
     "cross-env": "^5.0.5",
+    "css-loader": "^0.28.5",
     "eslint": "^4.5.0",
     "eslint-plugin-import": "^2.7.0",
     "eslint-watch": "^3.1.2",
@@ -47,6 +48,7 @@
     "html-webpack-plugin": "^2.30.1",
     "json-schema-faker": "^0.4.3",
     "json-server": "^0.12.0",
+    "style-loader": "^0.18.2",
     "whatwg-fetch": "^2.0.3"
   },
   "dependencies": {

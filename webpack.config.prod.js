@@ -2,6 +2,8 @@ const path = require('path');
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
+require('webpack-md5-hash')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
   devtool: 'source-map',
@@ -13,11 +15,12 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
-    filename: '[name].js'
+    filename: '[name].[chunkhash].js'
   },
   plugins: [
     // Minify JS
     new webpack.optimize.CommonsChunkPlugin({ name: 'vendor' }),
+    new ExtractTextPlugin('[name].[contenthash].css'),
     new UglifyJSPlugin(),
     new HtmlWebpackPlugin({
       template: 'src/index.html',
@@ -39,7 +42,7 @@ module.exports = {
   module: {
     loaders: [
       {test: /\.js$/, exclude: /node_modules/, loaders: ['babel-loader']},
-      {test: /\.css$/, loaders: ['style','css']}
+      {test: /\.css$/, loaders: ExtractTextPlugin.extract({fallback: 'style-loader', use: 'css-loader'})}
     ]
   }
 }
