@@ -16,7 +16,20 @@ var _compression = require('compression');
 
 var _compression2 = _interopRequireDefault(_compression);
 
+var _rollbar = require('rollbar');
+
+var _rollbar2 = _interopRequireDefault(_rollbar);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+require('dotenv').config();
+
+var rollbar = new _rollbar2.default({
+  accessToken: process.env.ROLLBAR_SERVER_TOKEN,
+  captureUncaught: true,
+  captureUnhandledRejections: true
+});
+rollbar.log('Hello world!');
 
 /* eslint-disable no-console */
 

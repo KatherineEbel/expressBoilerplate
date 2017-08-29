@@ -2,6 +2,15 @@ import express from 'express'
 import path from 'path'
 import open from 'open'
 import compression from 'compression'
+import Rollbar from 'rollbar'
+require('dotenv').config()
+
+const rollbar = new Rollbar({
+  accessToken: process.env.ROLLBAR_SERVER_TOKEN,
+  captureUncaught: true,
+  captureUnhandledRejections: true
+})
+rollbar.log('Hello world!')
 
 /* eslint-disable no-console */
 
